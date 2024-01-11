@@ -9,6 +9,23 @@ const loadUnitsData = async () => {
   }
 };
 
+function populateUnitsSelect(units, selectId) {
+  const select = document.getElementById(selectId);
+  for (const unit in units) {
+    const option = document.createElement("option");
+    option.value = unit;
+    option.text = unit;
+    select.add(option);
+  }
+}
+
+loadUnitsData().then((conversionTable) => {
+  if (conversionTable) {
+    populateUnitsSelect(conversionTable, "unit");
+    populateUnitsSelect(conversionTable, "convertTo");
+  }
+});
+
 const convertDistanceFunction = (
   distanceValue,
   distanceUnit,
@@ -36,12 +53,11 @@ const convertDistance = () => {
         toUnit,
         conversionTable
       );
-
       document.getElementById(
         "result"
       ).textContent = `Converted value: ${result.value} ${result.unit}`;
-      alert(JSON.stringify(result));
       console.log(JSON.stringify(result));
+      alert(JSON.stringify(result));
     }
   });
 };
