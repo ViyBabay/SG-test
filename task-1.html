@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance Converter</title>
+</head>
+
+<body>
+    <h1>Distance Converter</h1>
+    <label for="distance">Enter Distance:</label>
+    <input type="number" id="distance" placeholder="Distance value">
+
+    <select id="unit">
+        <option value="m">meters</option>
+        <option value="cm">centimeters</option>
+        <option value="in">inches</option>
+        <option value="ft">feet</option>
+
+    </select>
+
+    <label for="convertTo">Convert To:</label>
+    <select id="convertTo">
+        <option value="m">meters</option>
+        <option value="cm">centimeters</option>
+        <option value="in">inches</option>
+        <option value="ft">feet</option>
+
+    </select>
+
+    <button onclick="convertDistance()">Convert</button>
+
+
+    <p id="result"></p>
+
+    <script src="js/task1.js"></script>
+</body>
+
+</html>
