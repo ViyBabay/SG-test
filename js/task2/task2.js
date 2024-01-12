@@ -8,9 +8,6 @@ const dataInput = document.getElementById("dataInput");
 
 processBtn.addEventListener("click", processData);
 
-console.dir(dataInput);
-console.dir(conditionInput);
-
 function processData() {
   if (dataInput.value === "" || conditionInput.value === "") {
     alert("All fields should be filled in!");
