@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Фільтрація і Сортування Даних</title>
+    <style>
+        /* Додайте стилі за бажанням */
+        .container {
+            padding: 20px;
+        }
+
+        textarea,
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Фільтрація та Сортування Даних</h2>
+
+        <label for="dataInput">Введіть JSON дані:</label>
+        <textarea id="dataInput" rows="6" cols="50"></textarea>
+
+        <label for="conditionInput">Введіть умови (JSON формат):</label>
+        <textarea id="conditionInput" rows="6" cols="50"></textarea>
+
+        <button id="processBtn">Обробити</button>
+
+        <h3>Результат:</h3>
+        <pre id="resultOutput"></pre>
+    </div>
+
+    <script src="./js/task2/task2.js" type="module"></script>
+    <!-- Інші JavaScript файли, якщо потрібно -->
+</body>
+
+</html>
