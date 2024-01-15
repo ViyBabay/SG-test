@@ -5,10 +5,6 @@ body {
   margin: 0;
 }
 
-a {
-  margin-bottom: 20px;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -19,23 +15,10 @@ h1 {
   text-align: center;
 }
 
-label {
-  font-size: 20px;
-  margin-top: 20px;
-}
-
-textarea {
-  width: 500px;
-  height: 100px;
-  border-radius: 5px;
-  resize: none;
-  margin-top: 5px;
-}
-
 button {
   padding: 5px;
-  margin-top: 20px;
   font-size: 15px;
   border-radius: 5px;
   border-color: darkgray;
+  align-items: center;
 }

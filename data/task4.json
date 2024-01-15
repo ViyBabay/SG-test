@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "text": "What is your marital status?",
+    "options": [{ "Single": 2 }, { "Married": 3 }]
+  },
+  {
+    "id": 2,
+    "text": "Are you planning on getting married next year?",
+    "options": [{ "Yes": 5 }, { "No": 5 }]
+  },
+  {
+    "id": 3,
+    "text": "How long have you been married?",
+    "options": [{ "Less than a year": 5 }, { "More than a year": 4 }]
+  },
+  {
+    "id": 4,
+    "text": "Have you celebrated your one year anniversary?",
+    "options": [{ "Yes": 5 }, { "No": 5 }]
+  },
+  {
+    "id": 5,
+    "text": "End of questionnaire"
+  }
+]

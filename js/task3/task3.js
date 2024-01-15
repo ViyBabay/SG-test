@@ -1,23 +1,22 @@
-const btnLocate = document.getElementById("locate");
-btnLocate.addEventListener("click", locateAsteroid);
+const locateBtn = document.getElementById("locate");
 
-function generateAsteroidLocation() {
+const generateAsteroidLocation = () => {
   return {
     x: Math.floor(Math.random() * 101),
     y: Math.floor(Math.random() * 101),
     z: Math.floor(Math.random() * 101),
   };
-}
+};
 
-function calculateDistance(probe, asteroid) {
+const calculateDistance = (probe, asteroid) => {
   return Math.sqrt(
     Math.pow(probe.x - asteroid.x, 2) +
       Math.pow(probe.y - asteroid.y, 2) +
       Math.pow(probe.z - asteroid.z, 2)
   );
-}
+};
 
-function locateAsteroid() {
+const locateAsteroid = () => {
   const asteroid = generateAsteroidLocation();
   let probes = [];
   let attempts = 0;
@@ -40,16 +39,31 @@ function locateAsteroid() {
     attempts++;
   }
 
+  // Підготовка результатів у бажаному форматі
+  const result = {
+    location: {
+      x: Math.round(asteroid.x),
+      y: Math.round(asteroid.y),
+      z: Math.round(asteroid.z),
+    },
+    probes: {
+      count: attempts,
+      coordinates: probes.map((p) => ({
+        x: p.x,
+        y: p.y,
+        z: p.z,
+      })),
+    },
+  };
+
   // Відображення результатів
-  document.getElementById("result").innerHTML = `
-    <p>Asteroid Location: (${Math.round(asteroid.x)}, ${Math.round(
-    asteroid.y
-  )}, ${Math.round(asteroid.z)})</p>
-    <p>Probes Used: ${attempts}</p>
-    <p>Probes Coordinates: ${probes
-      .map((p) => `(${p.x}, ${p.y}, ${p.z})`)
-      .join(", ")}</p>
-`;
-}
+  document.getElementById("result").innerHTML = JSON.stringify(
+    { result },
+    null,
+    2
+  );
+};
+
+locateBtn.addEventListener("click", locateAsteroid);
 
 // locateAsteroid();

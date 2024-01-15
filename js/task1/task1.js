@@ -1,3 +1,5 @@
+const convertBtn = document.getElementById("convertBtn");
+
 const loadUnitsData = async () => {
   try {
     const response = await fetch("data/units.json");
@@ -9,7 +11,7 @@ const loadUnitsData = async () => {
   }
 };
 
-function populateUnitsSelect(units, selectId) {
+const populateUnitsSelect = (units, selectId) => {
   const select = document.getElementById(selectId);
   for (const unit in units) {
     const option = document.createElement("option");
@@ -17,7 +19,7 @@ function populateUnitsSelect(units, selectId) {
     option.text = unit;
     select.add(option);
   }
-}
+};
 
 loadUnitsData().then((conversionTable) => {
   if (conversionTable) {
@@ -53,11 +55,13 @@ const convertDistance = () => {
         toUnit,
         conversionTable
       );
-      document.getElementById(
-        "result"
-      ).textContent = `Converted value: ${result.value} ${result.unit}`;
-      console.log(JSON.stringify(result));
-      alert(JSON.stringify(result));
+      document.getElementById("result").innerText = JSON.stringify(
+        { result },
+        null,
+        2
+      );
     }
   });
 };
+
+convertBtn.addEventListener("click", convertDistance);

@@ -6,9 +6,7 @@ const processBtn = document.getElementById("processBtn");
 const conditionInput = document.getElementById("conditionInput");
 const dataInput = document.getElementById("dataInput");
 
-processBtn.addEventListener("click", processData);
-
-function processData() {
+const processData = () => {
   if (dataInput.value === "" || conditionInput.value === "") {
     alert("All fields should be filled in!");
   } else {
@@ -27,7 +25,7 @@ function processData() {
         console.log(result);
       }
 
-      document.getElementById("resultOutput").innerText = JSON.stringify(
+      document.getElementById("result").innerText = JSON.stringify(
         { result },
         null,
         2
@@ -36,4 +34,6 @@ function processData() {
       alert("Please enter data in JSON format");
     }
   }
-}
+};
+
+processBtn.addEventListener("click", processData);
