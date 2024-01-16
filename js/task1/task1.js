@@ -1,8 +1,10 @@
 const convertBtn = document.getElementById("convertBtn");
 
 const loadUnitsData = async () => {
+  const filePath = "data/task1.json";
+
   try {
-    const response = await fetch("data/units.json");
+    const response = await fetch(filePath);
     const data = await response.json();
     return data.units;
   } catch (error) {
@@ -11,8 +13,9 @@ const loadUnitsData = async () => {
   }
 };
 
-const populateUnitsSelect = (units, selectId) => {
+const addUnitsItems = (units, selectId) => {
   const select = document.getElementById(selectId);
+
   for (const unit in units) {
     const option = document.createElement("option");
     option.value = unit;
@@ -23,8 +26,8 @@ const populateUnitsSelect = (units, selectId) => {
 
 loadUnitsData().then((conversionTable) => {
   if (conversionTable) {
-    populateUnitsSelect(conversionTable, "unit");
-    populateUnitsSelect(conversionTable, "convertTo");
+    addUnitsItems(conversionTable, "unit");
+    addUnitsItems(conversionTable, "convertTo");
   }
 });
 

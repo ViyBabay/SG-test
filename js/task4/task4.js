@@ -1,30 +1,20 @@
-const loadJSON = async (filePath) => {
+const loadQuestions = async () => {
+  const filePath = "../../data/task4.json";
+
   try {
     const response = await fetch(filePath);
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.error("Error loading JSON:", error);
   }
 };
 
-const questions = await loadJSON("../../data/task4.json");
-
-const traverseQuestions = (config, currentPath, currentQuestion, paths) => {
+const createPath = (config, currentPath, currentQuestion, paths) => {
   if ("options" in currentQuestion) {
     for (let option of currentQuestion.options) {
-      console.log("this is option >>>", option);
       for (let key in option) {
-        console.log("key >>>", key);
         let newPath = [...currentPath, { [currentQuestion.text]: key }];
-        console.log("new path >>>", newPath);
-        console.log("options key >>>", option[key]);
-        traverseQuestions(0
-          config,
-          newPath,
-          config.questions[option[key] - 1],
-          paths
-        );
+        createPath(config, newPath, config.questions[option[key] - 1], paths);
       }
     }
   } else {
@@ -32,9 +22,11 @@ const traverseQuestions = (config, currentPath, currentQuestion, paths) => {
   }
 };
 
-const testQuestionnaire = (config) => {
+const testQuestionnaire = async () => {
+  const config = { questions: await loadQuestions() };
+
   const paths = [];
-  traverseQuestions(config, [], config.questions[0], paths);
+  createPath(config, [], config.questions[0], paths);
 
   return {
     paths: {
@@ -44,10 +36,11 @@ const testQuestionnaire = (config) => {
   };
 };
 
-const config = {
-  questions,
-};
+const result = await testQuestionnaire();
 
-const result = testQuestionnaire(config);
-
+document.getElementById("result").innerText = JSON.stringify(
+  { result },
+  null,
+  2
+);
 console.log(JSON.stringify(result, null, 2));

@@ -21,11 +21,9 @@ const locateAsteroid = () => {
   let probes = [];
   let attempts = 0;
 
-  // Початкова точка - центр куба
   let probe = { x: 50, y: 50, z: 50 };
   let distance = calculateDistance(probe, asteroid);
 
-  // Простий алгоритм пошуку: зменшуємо відстань до астероїда
   while (distance > 1 && attempts < 100) {
     probe.x += (asteroid.x - probe.x) / distance;
     probe.y += (asteroid.y - probe.y) / distance;
@@ -39,7 +37,6 @@ const locateAsteroid = () => {
     attempts++;
   }
 
-  // Підготовка результатів у бажаному форматі
   const result = {
     location: {
       x: Math.round(asteroid.x),
@@ -56,7 +53,6 @@ const locateAsteroid = () => {
     },
   };
 
-  // Відображення результатів
   document.getElementById("result").innerHTML = JSON.stringify(
     { result },
     null,
@@ -65,5 +61,3 @@ const locateAsteroid = () => {
 };
 
 locateBtn.addEventListener("click", locateAsteroid);
-
-// locateAsteroid();
